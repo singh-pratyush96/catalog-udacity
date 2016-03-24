@@ -17,7 +17,7 @@ su vagrant -c 'createdb forum'
 su vagrant -c 'psql forum -f /vagrant/forum/forum.sql'
 
 vagrantTip="The shared directory is located at /vagrant\nTo access your shared files: cd /vagrant"
-echo -e $vagrantTip > /etc/motd
+echo -e ${vagrantTip} > /etc/motd
 
 wget http://download.redis.io/redis-stable.tar.gz
 tar xvzf redis-stable.tar.gz
