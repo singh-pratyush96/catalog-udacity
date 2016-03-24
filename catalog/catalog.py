@@ -18,7 +18,7 @@ class User(db.Model):
 
 
 # Category Model
-class Catrgory(db.Model):
+class Category(db.Model):
     __tablename__ = "categories"
 
     category_id = db.Column(db.Integer, primary_key=True)
@@ -31,7 +31,7 @@ class Items(db.Model):
 
     item_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.cotegoty_id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.category_id'))
     item_name = db.Column(db.String(30), nullable=False)
     item_description = db.Column(db.String(256))
     item_create_time = db.Column(db.DateTime)
