@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 apt-get -qqy update
 apt-get -qqy install postgresql python-psycopg2
 apt-get -qqy install python-flask python-sqlalchemy
@@ -15,7 +16,7 @@ su vagrant -c 'createdb'
 su vagrant -c 'createdb forum'
 su vagrant -c 'psql forum -f /vagrant/forum/forum.sql'
 
-vagrantTip="[35m[1mThe shared directory is located at /vagrant\nTo access your shared files: cd /vagrant(B[m"
+vagrantTip="The shared directory is located at /vagrant\nTo access your shared files: cd /vagrant"
 echo -e $vagrantTip > /etc/motd
 
 wget http://download.redis.io/redis-stable.tar.gz
