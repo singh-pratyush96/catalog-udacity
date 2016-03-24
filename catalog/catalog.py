@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 
 # User model
 class User(db.Model):
-    __table_name__ = "users"
+    __tablename__ = "users"
 
     user_id = db.Column(db.Integer, primary_key=True)
     user_first_name = db.Column(db.String(30), nullable=False)
@@ -19,7 +19,7 @@ class User(db.Model):
 
 # Category Model
 class Catrgory(db.Model):
-    __table_name__ = "categories"
+    __tablename__ = "categories"
 
     category_id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(30), nullable=False)
@@ -27,7 +27,7 @@ class Catrgory(db.Model):
 
 # Items Model
 class Items(db.Model):
-    __table_name__ = "items"
+    __tablename__ = "items"
 
     item_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
