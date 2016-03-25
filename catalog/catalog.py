@@ -1,9 +1,11 @@
-from flask import Flask
+import sys
+
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5432/catalog'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vagrant:123@localhost:5432/catalog'
 db = SQLAlchemy(app)
 
 
@@ -11,7 +13,7 @@ db = SQLAlchemy(app)
 class User(db.Model):
     __tablename__ = "users"
 
-    user_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_first_name = db.Column(db.String(30), nullable=False)
     user_last_name = db.Column(db.String(30), nullable=False)
     user_email = db.Column(db.String(120), unique=True)
@@ -29,9 +31,21 @@ class Category(db.Model):
 class Item(db.Model):
     __tablename__ = "items"
 
-    item_id = db.Column(db.Integer, primary_key=True)
+    item_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.category_id'))
     item_name = db.Column(db.String(30), nullable=False)
     item_description = db.Column(db.String(256))
     item_create_time = db.Column(db.DateTime)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 2:
+        db.create_all()
+    app.debug = True
+    app.run(host='0.0.0.0')
