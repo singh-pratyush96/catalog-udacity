@@ -25,8 +25,8 @@ class Category(db.Model):
     category_name = db.Column(db.String(30), nullable=False)
 
 
-# Items Model
-class Items(db.Model):
+# Item Model
+class Item(db.Model):
     __tablename__ = "items"
 
     item_id = db.Column(db.Integer, primary_key=True)
