@@ -41,7 +41,14 @@ class Item(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    list = [
+        {'title': 'Title1', 'content': 'Content1', 'linka': 'Link1 A', 'linkb': 'Link1 B'},
+        {'title': 'Title2', 'content': 'Content2', 'linka': 'Link2 A', 'linkb': 'Link2 B'},
+        {'title': 'Title3', 'content': 'Content3', 'linka': 'Link3 A', 'linkb': 'Link3 B'},
+        {'title': 'Title4', 'content': 'Content4', 'linka': 'Link4 A', 'linkb': 'Link4 B'},
+        {'title': 'Title5', 'content': 'Content5', 'linka': 'Link5 A', 'linkb': 'Link5 B'},
+    ]
+    return render_template('index.html', cards=list)
 
 
 if __name__ == "__main__":
