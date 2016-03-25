@@ -2,16 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../static/css/materialize.min.css"/>
     <link rel="stylesheet" href="../static/css/style.css">
     <script src="../static/js/materialize.min.js"></script>
-    <title>Index</title>
+    <script src="../static/js/jquery-2.2.2.min.js"></script>
+    <title>Catalog - Home</title>
 </head>
 <body>
 
-<div id="header-holder" class="page-heading">
-    Index of Categories
+<div id="header" class="page-heading">
+    Categories
 </div>
 
+<div class="container high-top-margin">
+    <div class="row center">
+        {% for category in categories %}
+        <div class="col s12 m4 l3">
+            <a class="waves-effect waves-light post-request-category" href="#">
+                <div class="card" style="display: inline-block;">
+                    <div class="card-image hoverable">
+                        <img src="../static/img/1.jpg" class="high-200px wide-250px faded">
+                        <span class="card-title">{{category.title}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 </body>
 </html>
