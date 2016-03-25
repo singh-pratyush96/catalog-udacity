@@ -1,8 +1,69 @@
 .page-heading {
-    font-family: Open Sans, serif;
+    padding: 40px 0px 35px 0px;
+    font-family: Raleway, serif;
     font-size: 24pt;
     width: 100%;
     text-align: center;
     background-color: #009688 !important;
     color: #FFFFFF;
+}
+
+.wide-250px {
+    width: 250px;
+}
+
+.high-200px {
+    height: 200px;
+}
+
+.faded {
+    opacity: 0.80;
+}
+
+.wide-80 {
+    width: 80%;
+}
+
+.card .card-image img {
+    width: 200px;
+}
+
+@media only screen and (min-width: 601px) {
+    .row .col.m4 {
+        width: 50%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+}
+
+@media only screen and (min-width: 820px) {
+    .row .col.m4 {
+        width: 33.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .row .col.l3 {
+        width: 33.33%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+}
+
+@media only screen and (min-width: 1270px) {
+    .row .col.l3 {
+        width: 25%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+}
+
+.high-top-margin {
+    margin-top: 100px;
 }
