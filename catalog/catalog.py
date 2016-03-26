@@ -1,6 +1,6 @@
-import sys
+import json
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -26,6 +26,16 @@ class Category(db.Model):
     category_id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(30), nullable=False)
 
+    def __init__(self, category_name):
+        self.category_name = category_name
+
+    def serialize(self):
+        _dict = {
+            'category_id': self.category_id,
+            'category_name': self.category_name
+        }
+        return _dict
+
 
 # Item Model
 class Item(db.Model):
@@ -41,23 +51,42 @@ class Item(db.Model):
 
 @app.route('/')
 def index():
-    _list = [
-        {'title': 'Title1'},
-        {'title': 'Title2'},
-        {'title': 'Title3'},
-        {'title': 'Title4'},
-        {'title': 'Title5'},
-        {'title': 'Title6'},
-        {'title': 'Title7'},
-        {'title': 'Title8'},
-        {'title': 'Title9'},
-        {'title': 'Title0'},
-    ]
+    categories = Category.query.all()
+    _list = [Category.serialize(x) for x in categories]
+
     return render_template('index.html', categories=_list)
 
 
+@app.route('/category/create')
+def create_category_page():
+    return render_template('create_category.html')
+
+
+@app.route('/category/create', methods=['POST'])
+def create_category():
+    category_name = str(request.form['category_name'])
+
+    if len(Category.query.filter_by(category_name=category_name).all()) != 0:
+        status = '1'
+    else:
+        db.session.add(Category(category_name))
+        db.session.commit()
+        status = '0'
+
+    _dict = {
+        "status": status,
+        "category_name": category_name,
+    }
+    return json.dumps(_dict)
+
+
+@app.route('/category/<int:category_id>/')
+def static_page(category_id):
+    content = Category.query.filter_by(category_id=category_id).first()
+    return render_template('category.html', content=content)
+
+
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
-        db.create_all()
+    db.create_all()
     app.debug = True
     app.run(host='0.0.0.0')

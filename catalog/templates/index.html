@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../static/css/materialize.min.css"/>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <script src="../static/js/materialize.min.js"></script>
-    <script src="../static/js/jquery-2.2.2.min.js"></script>
+    <link rel="stylesheet" href="/static/css/materialize.min.css"/>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/jquery-2.2.2.min.js"></script>
+    <script src="/static/js/materialize.min.js"></script>
+    <script src="/static/js/main.js"></script>
     <title>Catalog - Home</title>
 </head>
 <body>
 
 <div id="header" class="page-heading">
-    Categories
+    Home
 </div>
 
 <div class="container high-top-margin">
     <div class="row center">
         {% for category in categories %}
         <div class="col s12 m4 l3">
-            <a class="waves-effect waves-light post-request-category" href="#">
-                <div class="card" style="display: inline-block;">
-                    <div class="card-image hoverable">
-                        <img src="../static/img/1.jpg" class="high-200px wide-250px faded">
-                        <span class="card-title">{{category.title}}</span>
+            <a class="waves-effect waves-light post-request-category" href="/category/{{category.category_id}}/">
+                <div class="card faded hoverable">
+                    <div class="card-image">
+                        <img src="../static/img/category{{category.category_id}}.jpg"
+                             onError="this.onerror=null;this.src='../static/img/1.jpg';" class="high-200px wide-250px">
                     </div>
+                    <span class="card-title grey-text text-darken-4">{{category.category_name}}</span>
                 </div>
             </a>
         </div>
