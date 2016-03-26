@@ -24,6 +24,15 @@
     opacity: 1;
 }
 
+.open-sans-text-24px {
+    font-family: Open Sans, Serif;
+    font-size: 24px;
+}
+
+.padding0-100-0-0 {
+    padding-right: 100px;
+}
+
 .wide-80 {
     width: 80%;
 }

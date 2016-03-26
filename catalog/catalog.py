@@ -25,9 +25,11 @@ class Category(db.Model):
 
     category_id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(30), nullable=False)
+    category_description = db.Column(db.String(300), nullable=False)
 
-    def __init__(self, category_name):
+    def __init__(self, category_name, category_description):
         self.category_name = category_name
+        self.category_description = category_description
 
     def serialize(self):
         _dict = {
@@ -64,18 +66,20 @@ def create_category_page():
 
 @app.route('/category/create', methods=['POST'])
 def create_category():
-    category_name = str(request.form['category_name'])
+    category_name = request.form['category_name']
+    category_description = request.form['category_description']
 
     if len(Category.query.filter_by(category_name=category_name).all()) != 0:
         status = '1'
     else:
-        db.session.add(Category(category_name))
+        db.session.add(Category(category_name, category_description))
         db.session.commit()
         status = '0'
 
     _dict = {
         "status": status,
         "category_name": category_name,
+        "category_description": category_description
     }
     return json.dumps(_dict)
 
