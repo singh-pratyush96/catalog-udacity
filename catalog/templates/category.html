@@ -18,7 +18,7 @@
 <div class="container">
     <div class="row high-top-margin">
         <div class="col s12 m12 l12 center">
-            <div class="card-panel teal lighten-1 z-depth-3">
+            <div class="card-panel teal lighten-1 z-depth-1">
           <span class="white-text open-sans-text-24px">
               {{content.category_description}}
           </span>
@@ -28,12 +28,17 @@
 </div>
 
 <div class="container">
-    <h2 class="header">Items</h2>
-    {% for item in content['items'] %}
-    <ul class="collection">
-        {{item.item_name}}
-    </ul>
-    {% endfor %}
+    <h4>Items in Category</h4>
+    <div class="row">
+        {% for item in content['items'] %}
+        <a href="/item/{{item.item_id}}">
+            <div class="card-panel hoverable">
+                {{item.item_name}}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
 </div>
 
 </body>
