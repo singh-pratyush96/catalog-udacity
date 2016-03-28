@@ -26,5 +26,15 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <h2 class="header">Items</h2>
+    {% for item in content['items'] %}
+    <ul class="collection">
+        {{item.item_name}}
+    </ul>
+    {% endfor %}
+</div>
+
 </body>
 </html>

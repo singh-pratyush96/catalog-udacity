@@ -87,7 +87,17 @@ def create_category():
 @app.route('/category/<int:category_id>/')
 def static_page(category_id):
     content = Category.query.filter_by(category_id=category_id).first()
-    return render_template('category.html', content=content)
+    items = Item.query.filter(Item.category_id == content.category_id)
+
+    _dict = {
+        "category_id": content.category_id,
+        "category_name": content.category_name,
+        "category_description": content.category_description,
+        "number_of_items": len([x for x in items]),
+        "items": items
+    }
+
+    return render_template('category.html', content=_dict)
 
 
 if __name__ == "__main__":
