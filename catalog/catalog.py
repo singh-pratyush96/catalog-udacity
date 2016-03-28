@@ -85,7 +85,7 @@ def create_category():
 
 
 @app.route('/category/<int:category_id>/')
-def static_page(category_id):
+def static_page_category(category_id):
     content = Category.query.filter_by(category_id=category_id).first()
     items = Item.query.filter(Item.category_id == content.category_id)
 
@@ -98,6 +98,11 @@ def static_page(category_id):
     }
 
     return render_template('category.html', content=_dict)
+
+
+@app.route('/item/<int:item_id>')
+def static_page_item(item_id):
+    return "Under Construction"
 
 
 if __name__ == "__main__":
