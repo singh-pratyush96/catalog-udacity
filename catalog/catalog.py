@@ -102,7 +102,8 @@ def static_page_category(category_id):
 
 @app.route('/item/<int:item_id>')
 def static_page_item(item_id):
-    return "Under Construction"
+    item = Item.query.filter_by(item_id=item_id)
+    return render_template('item.html', content=item)
 
 
 if __name__ == "__main__":
