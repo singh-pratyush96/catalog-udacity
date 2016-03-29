@@ -102,8 +102,15 @@ def static_page_category(category_id):
 
 @app.route('/item/<int:item_id>')
 def static_page_item(item_id):
-    item = Item.query.filter_by(item_id=item_id)
-    return render_template('item.html', content=item)
+    item = Item.query.filter_by(item_id=item_id).first()
+    category = Category.query.filter_by(category_id=item.category_id).first()
+    user = User.query.filter_by(user_id=item.user_id).first()
+    content = {
+        'item': item,
+        'category': category,
+        'user': user
+    }
+    return render_template('item.html', content=content)
 
 
 if __name__ == "__main__":

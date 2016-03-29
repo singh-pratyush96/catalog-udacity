@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/materialize.min.css"/>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/jquery-2.2.2.min.js"></script>
+    <script src="/static/js/materialize.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <title>{{ content['item'].item_name }} - {{ content['category'].category_name}}</title>
 </head>
 <body>
+
+<div class="page-heading">
+    {{content['item'].item_name}} ({{content['category'].category_name}})
+</div>
+
+<div class="container">
+    <h6 class="right-align">
+        Created by {{content['user'].user_first_name}} {{content['user'].user_last_name}}
+    </h6>
+</div>
+
+<div class="container high-top-margin">
+    <h3 class="raleway">
+        Description
+    </h3>
+    <div class="open-sans-text-18px">
+        {{content['item'].item_description}}
+    </div>
+</div>
 
 </body>
 </html>
