@@ -38,6 +38,11 @@
     padding-right: 100px;
 }
 
+.padding0-20-0-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .wide-80 {
     width: 80%;
 }
