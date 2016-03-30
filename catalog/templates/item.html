@@ -18,19 +18,25 @@
 
 <div class="container">
     <h6 class="right-align">
-        Created by {{content['user'].user_first_name}} {{content['user'].user_last_name}}
+        Created by {{content['user'].user_first_name}} {{content['user'].user_last_name}}<br>
+        On {{content['item'].item_create_time}}
     </h6>
 </div>
 
-<div class="container high-top-margin">
+<div class="container center-align">
     <div class="card">
-        <u>
-            <h3 class="raleway center-align ">
-                Description
-            </h3>
-        </u>
-        <div class="open-sans-text-18px padding0-20-0-20">
-            {{content['item'].item_description}}
+        <div class="container high-top-margin center-align">
+            <div class="card wrap-content">
+                <h3 class="raleway padding0-50-0-50">
+                    Description
+                </h3>
+            </div>
+        </div>
+        <div class="container left-align">
+            <div class="open-sans-text-18px padding50-20-50-20">
+                {{content['item'].item_description}}
+            </div>
+
         </div>
     </div>
 </div>

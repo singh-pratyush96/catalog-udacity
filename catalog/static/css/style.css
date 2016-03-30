@@ -43,6 +43,19 @@
     padding-right: 20px;
 }
 
+.padding0-50-0-50 {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.padding50-20-50-20 {
+    padding: 50px 20px 50px 20px;
+}
+
+.wrap-content {
+    display: inline-block;
+}
+
 .wide-80 {
     width: 80%;
 }
